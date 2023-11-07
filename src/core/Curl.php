@@ -1,17 +1,16 @@
 <?php
 
-namespace Iprbooks\Ebs\Sdk\Core;
+namespace Vkrsmart\Sdk\Core;
 
 class Curl
 {
 
-    const HOST = 'https://api.iprbooks.ru';
+    const HOST = '';
 
-    const X_API_KEY = 'pG7xLieVraKMHksK';
+    const X_API_KEY = '';
 
     /**
      * Отправка запроса
-     * @param $host
      * @param $apiMethod
      * @param $token
      * @param array $params
@@ -40,13 +39,10 @@ class Curl
 
         $curlResult = curl_exec($curl);
 
-
         if (curl_errno($curl)) {
             return Curl::getError('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
-
-        $response = json_decode($curlResult, true);
-        return $response;
+        return json_decode($curlResult, true);
     }
 
 
@@ -56,7 +52,7 @@ class Curl
      * @param $code
      * @return array
      */
-    private static function getError($message, $code)
+    private static function getError($message, $code): array
     {
         return array(
             'success' => false,

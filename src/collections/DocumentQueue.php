@@ -1,12 +1,13 @@
 <?php
 
-namespace Iprbooks\Ebs\Sdk\collections;
+namespace Vkrsmart\Sdk\collections;
 
-use Iprbooks\Ebs\Sdk\Client;
-use Iprbooks\Ebs\Sdk\Core\Collection;
-use Iprbooks\Ebs\Sdk\Models\Book;
+use Exception;
+use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\Models\Document;
+use Vkrsmart\Sdk\Core\Collection;
 
-class BooksCollection extends Collection
+class DocumentQueue extends Collection
 {
 
     /*
@@ -35,14 +36,14 @@ class BooksCollection extends Collection
     const YEAR_RIGHT = 'year_right';
 
 
-    private $apiMethod = '/2.0/resources/books/';
+    private string $apiMethod = '/2.0/resources/books/';
 
 
     /**
-     * Конструктор BooksCollection
+     * Конструктор DocumentQueue
      * @param Client $client
-     * @return BooksCollection
-     * @throws \Exception
+     * @return DocumentQueue
+     * @throws Exception
      */
     public function __construct(Client $client)
     {
@@ -54,7 +55,7 @@ class BooksCollection extends Collection
      * Возвращает метод api
      * @return string
      */
-    protected function getApiMethod()
+    protected function getApiMethod(): string
     {
         return $this->apiMethod;
     }
@@ -64,7 +65,7 @@ class BooksCollection extends Collection
      * @param $field
      * @return boolean
      */
-    protected function checkFilterFields($field)
+    protected function checkFilterFields($field): bool
     {
         if ($field == self::TITLE || $field == self::PUBHOUSE || $field == self::AUTHOR
             || $field == self::YEAR_LEFT || $field == self::YEAR_RIGHT) {
@@ -76,14 +77,13 @@ class BooksCollection extends Collection
     /**
      * Возвращает элемент выборки
      * @param $index
-     * @return Book
-     * @throws \Exception
+     * @return Document
+     * @throws Exception
      */
-    public function getItem($index)
+    public function getItem($index): Document
     {
         parent::getItem($index);
         $response = $this->createModelWrapper($this->data[$index]);
-        $item = new Book($this->getClient(), $response);
-        return $item;
+        return new Document($this->getClient(), $response);
     }
 }

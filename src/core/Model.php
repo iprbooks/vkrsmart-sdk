@@ -1,9 +1,9 @@
 <?php
 
-namespace Iprbooks\Ebs\Sdk\Core;
+namespace Vkrsmart\Sdk\Core;
 
 use Exception;
-use Iprbooks\Ebs\Sdk\Client;
+use Vkrsmart\Sdk\Client;
 
 abstract class Model extends Response
 {

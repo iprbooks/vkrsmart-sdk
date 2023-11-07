@@ -1,9 +1,10 @@
 <?php
 
-namespace Iprbooks\Ebs\Sdk\Core;
+namespace Vkrsmart\Sdk\Core;
 
 use Exception;
-use Iprbooks\Ebs\Sdk\Client;
+use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\Core\Response;
 use Iterator;
 
 abstract class Collection extends Response implements Iterator
@@ -155,7 +156,7 @@ abstract class Collection extends Response implements Iterator
      * @param $data
      * @return array
      */
-    protected function createModelWrapper($data)
+    protected function createModelWrapper($data): array
     {
         return array(
             'success' => true,
@@ -208,7 +209,7 @@ abstract class Collection extends Response implements Iterator
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
-    public function valid()
+    public function valid(): bool
     {
         return isset($this->data[$this->position]);
     }

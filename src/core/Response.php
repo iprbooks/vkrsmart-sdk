@@ -1,9 +1,10 @@
 <?php
 
-namespace Iprbooks\Ebs\Sdk\Core;
+namespace Vkrsmart\Sdk\Core;
 
 use Exception;
-use Iprbooks\Ebs\Sdk\Client;
+use Vkrsmart\Sdk\Client;
+
 
 class Response
 {
@@ -47,7 +48,7 @@ class Response
      * Получить клиент
      * @return Client
      */
-    public function getClient()
+    public function getClient(): Client
     {
         return $this->client;
     }

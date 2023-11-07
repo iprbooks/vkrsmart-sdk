@@ -1,13 +1,14 @@
 <?php
 
-namespace Iprbooks\Ebs\Sdk;
+namespace Vkrsmart\Sdk;
 
 use Exception;
 use Firebase\JWT\JWT;
-use Iprbooks\Ebs\Sdk\Core\Curl;
+use Vkrsmart\Sdk\Core\Curl;
 
 final class Client
 {
+    CONST EXP = 5000;
     /*
      * id пользователя
      */
@@ -16,7 +17,7 @@ final class Client
     /*
      * Секретный ключ
      */
-    private $secretKey;
+    private string $secretKey;
 
 
     /**
@@ -30,7 +31,6 @@ final class Client
         if (!is_numeric($clientId)) {
             throw new Exception('$clientId must be numeric');
         }
-
         $this->clientId = $clientId;
         $this->secretKey = $secretKey;
     }
@@ -40,7 +40,7 @@ final class Client
         $json = array(
             "client_id" => $this->clientId,
             'iat' => time(),
-            'exp' => time() + config('jwt.exp'),
+            'exp' => time() + self::EXP,
         );
         $token = JWT::encode($json, $this->secretKey, 'HS256');
         $params = array_merge(array("client_id" => $this->clientId), $params);
