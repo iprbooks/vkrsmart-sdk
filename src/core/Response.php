@@ -58,7 +58,7 @@ class Response
      * @param $name
      * @return string
      */
-    protected function getValue($name)
+    protected function getValue($name): string
     {
         if (is_array($this->data) && array_key_exists($name, $this->data)) {
             return $this->data[$name];

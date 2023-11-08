@@ -12,7 +12,7 @@ final class Client
     /*
      * id пользователя
      */
-    private $clientId;
+    private $organisationId;
 
     /*
      * Секретный ключ
@@ -31,19 +31,19 @@ final class Client
         if (!is_numeric($clientId)) {
             throw new Exception('$clientId must be numeric');
         }
-        $this->clientId = $clientId;
+        $this->organisationId = $clientId;
         $this->secretKey = $secretKey;
     }
 
     public function makeRequest($apiMethod, array $params)
     {
         $json = array(
-            "client_id" => $this->clientId,
+            "client_id" => $this->organisationId,
             'iat' => time(),
             'exp' => time() + self::EXP,
         );
         $token = JWT::encode($json, $this->secretKey, 'HS256');
-        $params = array_merge(array("client_id" => $this->clientId), $params);
+        $params = array_merge(array("client_id" => $this->organisationId), $params);
         return Curl::exec($apiMethod, $token, $params);
     }
 

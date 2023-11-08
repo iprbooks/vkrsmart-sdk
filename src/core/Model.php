@@ -28,9 +28,9 @@ abstract class Model extends Response
 
     /**
      * Отправка запроса
-     * @param $id
+     * @param int $id
      */
-    public function get($id)
+    public function get(int $id)
     {
         $apiMethod = $this->getApiMethod();
 

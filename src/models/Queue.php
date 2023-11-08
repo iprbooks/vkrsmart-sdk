@@ -10,6 +10,17 @@ class Queue extends Model
 {
     //Уточнить у Камиля полный путь
     private string $apiMethod = '';
+    /**
+     * Конструктор Queue
+     * @param Client $client
+     * @param null $response
+     * @throws Exception
+     */
+    public function __construct(Client $client, $response = null)
+    {
+        parent::__construct($client, $response);
+        return $this;
+    }
 
     /**
      * Возвращает метод апи для вызова
@@ -21,10 +32,11 @@ class Queue extends Model
     public function uploadDocument(string $filePath){
         $file = fopen($filePath,'r');
         if(!$file){
-            return false;
+            return json_encode(['success'=>false,'message'=>'Такого файла не существует']);
         }
-        return json_encode(['success'=>true,'file'=>$file]);
-
-
+        $params = [
+            'file_path' => $filePath
+        ];
+        return $this->getClient()->makeRequest($this->getApiMethod(),$params);
     }
 }

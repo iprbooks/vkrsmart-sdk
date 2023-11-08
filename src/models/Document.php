@@ -31,12 +31,15 @@ class Document extends Model
     {
         return $this->apiMethod;
     }
-     public function upload(string $filePath){
+    public function uploadDocument(string $filePath){
         $file = fopen($filePath,'r');
         if(!$file){
-            return false;
+            return json_encode(['success'=>false,'message'=>'Такого файла не существует']);
         }
-        return json_encode(['success'=>true,'file'=>$file]);
+        $params = [
+            'file_path' => $filePath
+        ];
+        return $this->getClient()->makeRequest($this->getApiMethod(),$params);
     }
 
 }

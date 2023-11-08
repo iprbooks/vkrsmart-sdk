@@ -134,7 +134,7 @@ abstract class Collection extends Response implements Iterator
      * @param $value - значение
      * @return Collection
      */
-    public function setFilter($field, $value)
+    public function setFilter($field, $value): Collection
     {
         if ($this->checkFilterFields($field)) {
             $this->filter[$field] = $value;
