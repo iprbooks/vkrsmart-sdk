@@ -2,10 +2,11 @@
 
 namespace Vkrsmart\Sdk\Core;
 
+use CURLFile;
+
 class Curl
 {
-
-    const HOST = '';
+    const API = '';
 
     const X_API_KEY = '';
 
@@ -18,7 +19,6 @@ class Curl
      */
     public static function exec($apiMethod, $token, array $params)
     {
-
         if (!empty($params)) {
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         };
@@ -32,10 +32,15 @@ class Curl
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_URL, self::HOST . $apiMethod);
+        curl_setopt($curl, CURLOPT_URL, self::API . $apiMethod);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        if(array_key_exists('file_path',$params)){
+            curl_setopt($curl, CURLOPT_POSTFIELDS, [
+                'file' => new CURLFile($params['file_path'], '')
+            ]);
+        }
 
         $curlResult = curl_exec($curl);
 

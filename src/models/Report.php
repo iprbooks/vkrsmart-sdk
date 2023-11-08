@@ -4,11 +4,9 @@ namespace Vkrsmart\Sdk\Models;
 
 use Exception;
 use Vkrsmart\Sdk\Client;
-use Vkrsmart\Sdk\Core\Model;
 
 class Report extends Model
 {
-    private string $apiMethod = '';
 
     /**
      * Конструктор Report
@@ -22,10 +20,6 @@ class Report extends Model
         return $this;
     }
 
-    protected function getApiMethod(): string
-    {
-        return $this->apiMethod;
-    }
 
 
 

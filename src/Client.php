@@ -10,7 +10,7 @@ final class Client
 {
     CONST EXP = 5000;
     /*
-     * id пользователя
+     * id организации
      */
     private $organisationId;
 
@@ -46,5 +46,6 @@ final class Client
         $params = array_merge(array("client_id" => $this->organisationId), $params);
         return Curl::exec($apiMethod, $token, $params);
     }
+
 
 }

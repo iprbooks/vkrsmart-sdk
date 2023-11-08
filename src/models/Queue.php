@@ -4,12 +4,9 @@ namespace Vkrsmart\Sdk\Models;
 
 use Exception;
 use Vkrsmart\Sdk\Client;
-use Vkrsmart\Sdk\Core\Model;
 
 class Queue extends Model
 {
-    //Уточнить у Камиля полный путь
-    private string $apiMethod = '';
     /**
      * Конструктор Queue
      * @param Client $client
@@ -19,24 +16,21 @@ class Queue extends Model
     public function __construct(Client $client, $response = null)
     {
         parent::__construct($client, $response);
+        $this->domain = $this->domain.'/queue';
         return $this;
     }
-
     /**
-     * Возвращает метод апи для вызова
+     * @throws Exception
      */
-    protected function getApiMethod(): string
-    {
-        return $this->apiMethod;
-    }
     public function uploadDocument(string $filePath){
+        $apiMethod = $this->domain.'/upload';
         $file = fopen($filePath,'r');
         if(!$file){
-            return json_encode(['success'=>false,'message'=>'Такого файла не существует']);
+            throw new Exception('File not found');
         }
         $params = [
             'file_path' => $filePath
         ];
-        return $this->getClient()->makeRequest($this->getApiMethod(),$params);
+        return $this->getClient()->makeRequest($apiMethod,$params);
     }
 }
