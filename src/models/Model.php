@@ -7,6 +7,8 @@ use Vkrsmart\Sdk\Client;
 
 abstract class Model
 {
+    CONST PREFIX = '';
+
     /*
      * Инстанс клиента
      */
@@ -22,7 +24,7 @@ abstract class Model
      */
     protected array $data;
 
-    protected string $domain = 'api-link';
+    const API = ''; //link to api
 
 
     /**
@@ -38,7 +40,6 @@ abstract class Model
         }
         $this->client = $client;
         $this->response = $response;
-        return $this;
     }
 
 
@@ -55,7 +56,7 @@ abstract class Model
     public function get(int $id)
     {
         if ($id) {
-            $apiMethod = $this->domain."get/{$id}";
+            $apiMethod = "/".self::PREFIX."/get/{$id}";
         }
         else{
             throw new Exception('id invalid');

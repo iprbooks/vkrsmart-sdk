@@ -7,6 +7,7 @@ use Vkrsmart\Sdk\Client;
 
 class Document extends Model
 {
+    CONST PREFIX = '/document';
 
     /**
      * Конструктор Document
@@ -17,16 +18,16 @@ class Document extends Model
     public function __construct(Client $client, $response = null)
     {
         parent::__construct($client, $response);
-        $this->domain = $this->domain.'/document';
-        return $this;
     }
 
 
     /**
+     * @param string $filePath
+     * @return array|mixed
      * @throws Exception
      */
     public function uploadDocument(string $filePath){
-        $apiMethod = $this->domain.'/upload';
+        $apiMethod = self::PREFIX.'/upload';
         $file = fopen($filePath,'r');
         if(!$file){
             throw new Exception('File not found');

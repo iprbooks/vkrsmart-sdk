@@ -35,7 +35,7 @@ final class Client
         $this->secretKey = $secretKey;
     }
 
-    public function makeRequest($apiMethod, array $params)
+    public function makeRequest($apiMethod, array $params=null)
     {
         $json = array(
             "client_id" => $this->organisationId,
@@ -46,6 +46,4 @@ final class Client
         $params = array_merge(array("client_id" => $this->organisationId), $params);
         return Curl::exec($apiMethod, $token, $params);
     }
-
-
 }

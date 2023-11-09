@@ -7,6 +7,7 @@ use Vkrsmart\Sdk\Client;
 
 class Queue extends Model
 {
+    CONST PREFIX = '/queue';
     /**
      * Конструктор Queue
      * @param Client $client
@@ -16,14 +17,16 @@ class Queue extends Model
     public function __construct(Client $client, $response = null)
     {
         parent::__construct($client, $response);
-        $this->domain = $this->domain.'/queue';
-        return $this;
     }
+
     /**
+     * @param string $filePath
+     * @return array|mixed
      * @throws Exception
      */
-    public function uploadDocument(string $filePath){
-        $apiMethod = $this->domain.'/upload';
+    public function uploadDocument(string $filePath)
+    {
+        $apiMethod = '/upload';
         $file = fopen($filePath,'r');
         if(!$file){
             throw new Exception('File not found');
@@ -33,4 +36,15 @@ class Queue extends Model
         ];
         return $this->getClient()->makeRequest($apiMethod,$params);
     }
+
+    /**
+     * @param string $url
+     * @return array|mixed
+     */
+    public function uplouadByUrl(string $url)
+    {
+        $apiMethod = $this->domain."/$url";
+        return $this->getClient()->makeRequest($apiMethod);
+    }
+
 }

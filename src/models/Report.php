@@ -7,6 +7,7 @@ use Vkrsmart\Sdk\Client;
 
 class Report extends Model
 {
+    CONST PREFIX = '/report';
 
     /**
      * Конструктор Report
@@ -17,11 +18,5 @@ class Report extends Model
     public function __construct(Client $client, $response = null)
     {
         parent::__construct($client, $response);
-        return $this;
     }
-
-
-
-
-
 }
