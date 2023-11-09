@@ -1,6 +1,6 @@
 <?php
-
 namespace Vkrsmart\Sdk;
+
 
 use Exception;
 use Firebase\JWT\JWT;
@@ -22,28 +22,30 @@ final class Client
 
     /**
      * Конструктор Client
-     * @param $clientId
+     * @param $organisationId
      * @param $secretKey
      * @throws Exception
      */
-    public function __construct($clientId, $secretKey)
+    public function __construct($organisationId, $secretKey)
     {
-        if (!is_numeric($clientId)) {
-            throw new Exception('$clientId must be numeric');
+        if (!is_numeric($organisationId)) {
+            throw new Exception('id must be numeric');
         }
-        $this->organisationId = $clientId;
+        $this->organisationId = $organisationId;
         $this->secretKey = $secretKey;
     }
 
+
     public function makeRequest($apiMethod, array $params=null)
     {
-        $json = array(
-            "client_id" => $this->organisationId,
+        $payload = [
+            "organisation_id" => $this->organisationId,
             'iat' => time(),
             'exp' => time() + self::EXP,
-        );
-        $token = JWT::encode($json, $this->secretKey, 'HS256');
-        $params = array_merge(array("client_id" => $this->organisationId), $params);
+        ];
+        $token = JWT::encode($payload, $this->secretKey, 'HS256');
+        $params = array_merge(["organisation_id" => $this->organisationId], $params);
         return Curl::exec($apiMethod, $token, $params);
     }
+
 }

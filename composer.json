@@ -1,7 +1,11 @@
 {
+  "name": "vkrsmart/vkrsmart-sdk",
   "require": {
     "firebase/php-jwt": "^6.9",
     "ext-curl": "*",
     "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.4"
   }
 }

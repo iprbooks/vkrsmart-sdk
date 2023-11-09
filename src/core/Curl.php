@@ -6,26 +6,25 @@ use CURLFile;
 
 class Curl
 {
-    const API = '';
+    const API = 'http://api.bse.vkr-smart.ru:8004';
 
-    const X_API_KEY = '';
+//    const X_API_KEY = '';
 
     /**
      * Отправка запроса
      * @param $apiMethod
-     * @param $token
+     * @param $auth
      * @param array $params
      * @return array|mixed
      */
-    public static function exec($apiMethod, $token, array $params)
+    public static function exec($apiMethod, $auth, array $params)
     {
         if (!empty($params)) {
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         };
 
         $headers = array(
-            'Authorization: Bearer ' . $token,
-            'X-APIKey: ' . self::X_API_KEY,
+            'Authorization: Bearer ' . $auth,
             'Content-Type: application/x-www-form-urlencoded; charset=utf-8',
             'Accept: application/json'
         );
@@ -45,26 +44,31 @@ class Curl
         $curlResult = curl_exec($curl);
 
         if (curl_errno($curl)) {
-            return Curl::getError('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
+            return Curl::error('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
         return json_decode($curlResult, true);
     }
 
 
     /**
-     * Вормирование сообщения в случае ошибки
+     * Возврат error сообщения в json
      * @param $message
      * @param $code
-     * @return array
+     * @return false|string
      */
-    private static function getError($message, $code): array
+    public static function error($message, $code)
     {
-        return array(
+        return json_encode([
             'success' => false,
             'message' => $message,
             'total' => 0,
             'status' => $code,
-            'data' => null,
+            'data' => null
+            ]
         );
     }
+
+
+
+
 }

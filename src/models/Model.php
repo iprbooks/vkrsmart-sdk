@@ -4,7 +4,6 @@ namespace Vkrsmart\Sdk\Models;
 
 use Exception;
 use Vkrsmart\Sdk\Client;
-
 abstract class Model
 {
     CONST PREFIX = '';
@@ -51,23 +50,18 @@ abstract class Model
     /**
      * Отправка запроса
      * @param int $id
+     * @return array|false|mixed|string
      * @throws Exception
      */
     public function get(int $id)
     {
         if ($id) {
-            $apiMethod = "/".self::PREFIX."/get/{$id}";
+            $apiMethod = "/".self::PREFIX."/{$id}";
         }
         else{
-            throw new Exception('id invalid');
+            throw new Exception('id is invalid');
         }
-        $this->response = $this->getClient()->makeRequest($apiMethod, array());
-        if (array_key_exists('data', $this->response)) {
-            $this->data = $this->response['data'];
-        }
-        else {
-            $this->data = array();
-        }
+        return $this->response = $this->getClient()->makeRequest($apiMethod, array());
     }
 
 
