@@ -41,9 +41,9 @@ class Queue extends Model
      * @param string $url
      * @return array|mixed
      */
-    public function uplouadByUrl(string $url)
+    public function uploadByUrl(string $url)
     {
-        $apiMethod = $this->domain."/$url";
+        $apiMethod = "/$url";
         return $this->getClient()->makeRequest($apiMethod);
     }
 
