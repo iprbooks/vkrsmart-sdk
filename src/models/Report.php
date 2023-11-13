@@ -7,7 +7,7 @@ use Vkrsmart\Client;
 
 class Report extends Model
 {
-    CONST PREFIX = '/report';
+    protected string $prefix = 'report';
 
     /**
      * Конструктор Report

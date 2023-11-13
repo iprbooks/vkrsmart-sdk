@@ -24,7 +24,7 @@ class Curl
         Log::debug("Method = $method");
         $headers = array(
             'Authorization: Bearer ' . $auth,
-            'Content-Type: application/json',
+            'Content-Type: multipart/form-data',
             'Accept: application/json'
         );
         $curl = curl_init();

@@ -7,7 +7,7 @@ use Vkrsmart\Client;
 
 abstract class Model
 {
-    CONST PREFIX = '';
+    protected string $prefix = '';
 
     /*
      * Инстанс клиента
@@ -55,12 +55,12 @@ abstract class Model
     public function get(int $id)
     {
         if ($id) {
-            $apiMethod = "/".self::PREFIX."/{$id}";
+            $apiMethod = "/".$this->prefix."/{$id}";
         }
         else{
             throw new Exception('id is invalid');
         }
-        return $this->response = $this->getClient()->makeRequest($apiMethod, array());
+        return $this->getClient()->makeRequest($apiMethod, array());
     }
 
 
