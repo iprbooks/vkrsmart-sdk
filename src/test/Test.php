@@ -18,7 +18,7 @@ class Test extends TestCase
     {
         $client = new Client('0','1234');
         $document = new Document($client);
-        Log::debug($document->uploadDocument("C:\\Users\\iprsm\\Downloads\\197421952.pdf"));
+        Log::debug(implode(',',$document->uploadDocument("C:\\Users\\iprsm\\Downloads\\197421952.pdf")));
     }
 
 

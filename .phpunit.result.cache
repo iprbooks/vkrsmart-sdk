@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Vkrsmart\\test\\Test::testUpload":8,"Vkrsmart\\Sdk\\test\\Test::testUpload":8,"Vkrsmart\\Test\\Test::testUpload":8},"times":{"Vkrsmart\\test\\Test::testUpload":0.479,"Vkrsmart\\Sdk\\test\\Test::testUpload":0.014,"Vkrsmart\\Test\\Test::testUpload":0.75}}
+{"version":1,"defects":{"Vkrsmart\\test\\Test::testUpload":8,"Vkrsmart\\Sdk\\test\\Test::testUpload":8,"Vkrsmart\\Test\\Test::testUpload":8},"times":{"Vkrsmart\\test\\Test::testUpload":0.479,"Vkrsmart\\Sdk\\test\\Test::testUpload":0.014,"Vkrsmart\\Test\\Test::testUpload":0.336}}
