@@ -49,3 +49,7 @@
 [2023-11-13T13:29:49.381046+01:00] my_logger.DEBUG: Method = GET [] []
 [2023-11-13T13:29:49.381323+01:00] my_logger.DEBUG: Url = http://api.bse.vkr-smart.ru:8004/report/463228 [] []
 [2023-11-13T13:29:49.447618+01:00] my_logger.DEBUG: Curl result =  [] []
+[2023-11-13T13:32:20.594983+01:00] my_logger.DEBUG: Organisation id = 0,secret key = 1234,token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcmdhbml6YXRpb25faWQiOiIwIiwiaWF0IjoxNjk5ODc4NzQwLCJleHAiOjE2OTk4ODM3NDB9.a1fhVIv0xZS39J3ZdoC_NMx3_JgK4IUVUh1hGAlpfOU [] []
+[2023-11-13T13:32:20.597703+01:00] my_logger.DEBUG: Method = GET [] []
+[2023-11-13T13:32:20.598099+01:00] my_logger.DEBUG: Url = http://api.bse.vkr-smart.ru:8004/report/463228 [] []
+[2023-11-13T13:32:20.673749+01:00] my_logger.DEBUG: Curl result =  [] []

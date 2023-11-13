@@ -40,28 +40,11 @@ abstract class Model
         $this->response = $response;
     }
 
-
     public function getClient(): Client
     {
         return $this->client;
     }
 
-    /**
-     * Отправка запроса
-     * @param int $id
-     * @return array|false|mixed|string
-     * @throws Exception
-     */
-    public function get(int $id)
-    {
-        if ($id) {
-            $apiMethod = "/".$this->prefix."/{$id}";
-        }
-        else{
-            throw new Exception('id is invalid');
-        }
-        return $this->getClient()->makeRequest($apiMethod, array());
-    }
 
 
 }

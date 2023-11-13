@@ -19,4 +19,21 @@ class Report extends Model
     {
         parent::__construct($client, $response);
     }
+
+    /**
+     * Отправка запроса
+     * @param int $id
+     * @return array|false|mixed|string
+     * @throws Exception
+     */
+    public function get(int $id)
+    {
+        if ($id) {
+            $apiMethod = "/".$this->prefix."/{$id}";
+        }
+        else{
+            throw new Exception('id is invalid');
+        }
+        return $this->getClient()->makeRequest($apiMethod, array());
+    }
 }
