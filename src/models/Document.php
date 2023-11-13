@@ -1,10 +1,11 @@
 <?php
 
-namespace Vkrsmart\Sdk\Models;
+namespace Vkrsmart\Models;
 
 
 use Exception;
-use Vkrsmart\Sdk\Client;
+use Vkrsmart\Client;
+use Vkrsmart\logs\Log;
 
 class Document extends Model
 {
@@ -36,7 +37,7 @@ class Document extends Model
         $params = [
           'file_path' => $filePath
         ];
-        return $this->getClient()->makeRequest($apiMethod,$params);
+        return $this->getClient()->makeRequest($apiMethod,$params,'POST');
     }
 
 }

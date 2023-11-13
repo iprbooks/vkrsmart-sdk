@@ -12,9 +12,23 @@ class ComposerStaticInit5498b639dfbf6cf80516b343376e1c3b
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'Vkrsmart\\Test\\' => 14,
+            'Vkrsmart\\Models\\' => 16,
+            'Vkrsmart\\Logs\\' => 14,
+            'Vkrsmart\\Core\\' => 14,
+            'Vkrsmart\\' => 9,
+        ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
+            'PhpConsole\\' => 11,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
         ),
         'F' => 
         array (
@@ -27,9 +41,41 @@ class ComposerStaticInit5498b639dfbf6cf80516b343376e1c3b
     );
 
     public static $prefixDirsPsr4 = array (
+        'Vkrsmart\\Test\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/test',
+        ),
+        'Vkrsmart\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/models',
+        ),
+        'Vkrsmart\\Logs\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/logs',
+        ),
+        'Vkrsmart\\Core\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/core',
+        ),
+        'Vkrsmart\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'PhpConsole\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-console/php-console/src/PhpConsole',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Firebase\\JWT\\' => 
         array (

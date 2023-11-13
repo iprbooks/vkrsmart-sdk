@@ -1,12 +1,14 @@
 <?php
-namespace Vkrsmart\Sdk;
+
+namespace Vkrsmart;
 
 
 use Exception;
 use Firebase\JWT\JWT;
-use Vkrsmart\Sdk\Core\Curl;
+use Vkrsmart\Core\Curl;
+use Vkrsmart\logs\Log;
 
-final class Client
+class Client
 {
     CONST EXP = 5000;
     /*
@@ -36,16 +38,25 @@ final class Client
     }
 
 
-    public function makeRequest($apiMethod, array $params=null)
+    /**
+     * @param $apiMethod
+     * @param array $params
+     * @param string $method
+     * @return array|false|mixed|string
+     * @throws Exception
+     */
+    public function makeRequest($apiMethod, array $params, string $method="GET")
     {
         $payload = [
-            "organisation_id" => $this->organisationId,
+            "organization_id" => $this->organisationId,
             'iat' => time(),
             'exp' => time() + self::EXP,
         ];
         $token = JWT::encode($payload, $this->secretKey, 'HS256');
-        $params = array_merge(["organisation_id" => $this->organisationId], $params);
-        return Curl::exec($apiMethod, $token, $params);
+//        $params = array_merge(["organisation_id" => $this->organisationId], $params);
+
+        Log::debug("Organisation id = $this->organisationId,secret key = $this->secretKey,token = $token");
+        return Curl::exec($apiMethod, $token, $params,$method);
     }
 
 }

@@ -1,9 +1,10 @@
 <?php
 
-namespace Vkrsmart\Sdk\Models;
+namespace Vkrsmart\Models;
 
 use Exception;
-use Vkrsmart\Sdk\Client;
+use Vkrsmart\Client;
+
 abstract class Model
 {
     CONST PREFIX = '';
@@ -22,8 +23,6 @@ abstract class Model
      * Данные ответа
      */
     protected array $data;
-
-    const API = ''; //link to api
 
 
     /**

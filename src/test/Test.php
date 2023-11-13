@@ -1,11 +1,13 @@
 <?php
 
-namespace Vkrsmart\test;
+namespace Vkrsmart\Test;
+
 use Exception;
 use PHPUnit\Framework\TestCase;
-use Vkrsmart\Sdk\Models\Document;
-use Vkrsmart\Sdk\Models\Report;
-use Vkrsmart\Sdk\Client;
+use \Vkrsmart\Client;
+use Vkrsmart\logs\Log;
+use \Vkrsmart\Models\Document;
+
 class Test extends TestCase
 {
 
@@ -16,8 +18,10 @@ class Test extends TestCase
     {
         $client = new Client('0','1234');
         $document = new Document($client);
-        return $document->uploadDocument('');
+        Log::debug($document->uploadDocument("C:\\Users\\iprsm\\Downloads\\197421952.pdf"));
     }
+
+
 }
 
 
