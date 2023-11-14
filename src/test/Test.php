@@ -11,27 +11,37 @@ use Vkrsmart\Models\Report;
 
 class Test extends TestCase
 {
+    public string $file1 =  'C:\Users\iprsm\Downloads\barenkova_oforml_kr.pdf';
+
+    public array $files = ['C:\Users\iprsm\Downloads\barenkova_oforml_kr.pdf','C:\Users\iprsm\Downloads\197421952.pdf','C:\Users\iprsm\Downloads\52c8e8114c11cfa9e6e668ee652dbf2b.pdf'];
 
     /**
      * @throws Exception
      */
-    public function testUpload()
+    public function testDocument()
     {
         $client = new Client('0','1234');
         $document = new Document($client);
-        Log::debug(implode(',',$document->uploadDocument("C:\\Users\\iprsm\\Downloads\\barenkova_oforml_kr.pdf")));
+        $documentId = $document->uploadDocument('C:\Users\iprsm\Downloads\barenkova_oforml_kr.pdf');
+        Log::debug("Document id = $documentId");
+        $report = new Report($client);
+        $unique = $report->getUnique($documentId);
+        return $unique;
     }
 
     /**
-     * @return void
      * @throws Exception
      */
-    public function testGetReport(){
-        $documentId = 463233;
-        $client = new Client('0','1234');
-        $report = new Report($client);
-        Log::debug($report->get($documentId));
+    public function testDocuments(){
+         $client = new Client('0','1234');
+         $document = new Document($client);
+         $documentIds = $document->uploadDocuments($this->files);
+         $report = new Report($client);
+         $unique = $report->getUnique($documentIds[0]);
+         return $unique;
     }
+
+
 
 
 }

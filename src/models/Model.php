@@ -25,6 +25,7 @@ abstract class Model
     protected array $data;
 
 
+
     /**
      * Конструктор Model
      * @param Client $client

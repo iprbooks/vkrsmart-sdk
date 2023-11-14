@@ -41,7 +41,7 @@ class Client
     /**
      * @throws Exception
      */
-    public function makeRequest($apiMethod, array $params, string $method="GET")
+    public function makeRequest($apiMethod, array $params, string $method="GET"):array
     {
         $payload = [
             "organization_id" => $this->organisationId,

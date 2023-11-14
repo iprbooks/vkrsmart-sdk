@@ -4,6 +4,7 @@ namespace Vkrsmart\Models;
 
 use Exception;
 use Vkrsmart\Client;
+use Vkrsmart\logs\Log;
 
 class Report extends Model
 {
@@ -26,14 +27,19 @@ class Report extends Model
      * @return array|false|mixed|string
      * @throws Exception
      */
-    public function get(int $id)
+    public function getUnique(int $id)
     {
         if ($id) {
-            $apiMethod = "/".$this->prefix."/$id";
+            $apiMethod = "/".$this->prefix."/{$id}";
         }
         else{
             throw new Exception('id is invalid');
         }
-        return $this->getClient()->makeRequest($apiMethod, array());
+        while (!$this->response['success']){
+           $this->response = $this->getClient()->makeRequest($apiMethod,[]);
+           Log::debug("Response = ".json_encode($this->response));
+           sleep(20);
+        }
+        return $this->response['report']['uniquePercent'];
     }
 }

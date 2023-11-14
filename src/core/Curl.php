@@ -19,7 +19,7 @@ class Curl
      * @return array|mixed
      * @throws Exception
      */
-    public static function exec($apiMethod, $auth, array $params,string $method="GET")
+    public static function exec($apiMethod, $auth, array $params,string $method="GET"):array
     {
         Log::debug("Method = $method");
         $headers = array(
@@ -31,7 +31,8 @@ class Curl
         if($method!="GET" and $method!="POST"){
             throw new Exception("Incorrect method. Should be POST or GET");
         }
-        if($method="POST" and array_key_exists('file_path',$params)){
+        if($method=="POST" and array_key_exists('file_path',$params)){
+            Log::debug("Вошёл в условие");
             curl_setopt($curl, CURLOPT_POST, 1);
             curl_setopt($curl, CURLOPT_POSTFIELDS, [
                 'file' => new CURLFile($params['file_path'])
@@ -42,13 +43,14 @@ class Curl
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-//        if (!empty($params)) {
-//            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
-//        }
+        if (!empty($params)) {
+            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
+        }
         Log::debug("Url = ".self::API .$apiMethod);
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
 
         $curlResult = curl_exec($curl);
+        curl_close($curl);
         Log::debug("Curl result = $curlResult");
 
         if (curl_errno($curl)) {

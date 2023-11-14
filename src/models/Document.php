@@ -11,6 +11,8 @@ class Document extends Model
 {
     CONST PREFIX = '/document';
 
+    private array $documentIds;
+
     /**
      * Конструктор Document
      * @param Client $client
@@ -37,7 +39,22 @@ class Document extends Model
         $params = [
           'file_path' => $filePath
         ];
-        return $this->getClient()->makeRequest($apiMethod,$params,'POST');
+        $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
+        return $this->response['document_id'];
     }
+
+    /**
+     * @param mixed ...$filePaths
+     * @return array|mixed
+     * @throws Exception
+     */
+    public function uploadDocuments(...$filePaths){
+        foreach ($filePaths as $filePath){
+            $this->documentIds = $this->uploadDocument($filePath);
+        }
+        return $this->documentIds;
+    }
+
+
 
 }
