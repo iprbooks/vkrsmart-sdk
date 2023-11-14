@@ -29,7 +29,7 @@ class Report extends Model
     public function get(int $id)
     {
         if ($id) {
-            $apiMethod = "/".$this->prefix."/{$id}";
+            $apiMethod = "/".$this->prefix."/$id";
         }
         else{
             throw new Exception('id is invalid');

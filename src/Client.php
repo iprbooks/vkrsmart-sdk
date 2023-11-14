@@ -39,10 +39,6 @@ class Client
 
 
     /**
-     * @param $apiMethod
-     * @param array $params
-     * @param string $method
-     * @return array|false|mixed|string
      * @throws Exception
      */
     public function makeRequest($apiMethod, array $params, string $method="GET")

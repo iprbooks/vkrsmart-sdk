@@ -19,17 +19,18 @@ class Test extends TestCase
     {
         $client = new Client('0','1234');
         $document = new Document($client);
-        Log::debug(implode(',',$document->uploadDocument("C:\\Users\\iprsm\\Downloads\\197421952.pdf")));
+        Log::debug(implode(',',$document->uploadDocument("C:\\Users\\iprsm\\Downloads\\barenkova_oforml_kr.pdf")));
     }
 
     /**
+     * @return void
      * @throws Exception
      */
     public function testGetReport(){
-        $documentId = 463228;
+        $documentId = 463233;
         $client = new Client('0','1234');
         $report = new Report($client);
-        Log::debug(implode(',',$report->get($documentId)));
+        Log::debug($report->get($documentId));
     }
 
 
