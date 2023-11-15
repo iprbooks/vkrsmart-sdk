@@ -1,0 +1,4 @@
+/vendor/
+/logs/app.log
+phpunit.result.cache
+composer.lock
