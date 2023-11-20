@@ -1,23 +1,16 @@
 {
-  "name": "vkrsmart/vkrsmart",
-  "version" : "1.0.0",
-  "autoload": {
-    "psr-4": {
-      "Vkrsmart\\": "src/",
-      "Vkrsmart\\Models\\": "src/models",
-      "Vkrsmart\\Core\\": "src/core",
-      "Vkrsmart\\Test\\": "src/test",
-      "Vkrsmart\\Logs\\": "src/logs"
-    }
-  },
-  "require": {
-    "firebase/php-jwt": "^6.9",
-    "ext-curl": "*",
-    "ext-json": "*",
-    "monolog/monolog": "*",
-    "php-console/php-console": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^10.4"
-  }
+    "name": "vkrsmart/sdk",
+    "description": "Sdk to send request for vkrsmart api",
+    "type": "sdk",
+    "autoload": {
+        "psr-4": {
+            "Vkrsmart\\Sdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aleksandr Pavlov"
+        }
+    ],
+    "require": {}
 }

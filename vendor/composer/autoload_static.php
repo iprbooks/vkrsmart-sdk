@@ -14,11 +14,7 @@ class ComposerStaticInit5498b639dfbf6cf80516b343376e1c3b
     public static $prefixLengthsPsr4 = array (
         'V' => 
         array (
-            'Vkrsmart\\Test\\' => 14,
-            'Vkrsmart\\Models\\' => 16,
-            'Vkrsmart\\Logs\\' => 14,
-            'Vkrsmart\\Core\\' => 14,
-            'Vkrsmart\\' => 9,
+            'Vkrsmart\\Sdk\\' => 13,
         ),
         'P' => 
         array (
@@ -41,23 +37,7 @@ class ComposerStaticInit5498b639dfbf6cf80516b343376e1c3b
     );
 
     public static $prefixDirsPsr4 = array (
-        'Vkrsmart\\Test\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/test',
-        ),
-        'Vkrsmart\\Models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/models',
-        ),
-        'Vkrsmart\\Logs\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/logs',
-        ),
-        'Vkrsmart\\Core\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/core',
-        ),
-        'Vkrsmart\\' => 
+        'Vkrsmart\\Sdk\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

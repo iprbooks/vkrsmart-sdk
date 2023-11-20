@@ -6,11 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Vkrsmart\\Test\\' => array($baseDir . '/src/test'),
-    'Vkrsmart\\Models\\' => array($baseDir . '/src/models'),
-    'Vkrsmart\\Logs\\' => array($baseDir . '/src/logs'),
-    'Vkrsmart\\Core\\' => array($baseDir . '/src/core'),
-    'Vkrsmart\\' => array($baseDir . '/src'),
+    'Vkrsmart\\Sdk\\' => array($baseDir . '/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PhpConsole\\' => array($vendorDir . '/php-console/php-console/src/PhpConsole'),
