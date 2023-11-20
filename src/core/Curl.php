@@ -31,11 +31,11 @@ class Curl
         if($method!="GET" and $method!="POST"){
             throw new Exception("Incorrect method. Should be POST or GET");
         }
-        if($method=="POST" and array_key_exists('file_path',$params)){
+        if($method=="POST" and array_key_exists('file',$params)){
             Log::debug("Вошёл в условие");
             curl_setopt($curl, CURLOPT_POST, 1);
             curl_setopt($curl, CURLOPT_POSTFIELDS, [
-                'file' => new CURLFile($params['file_path'])
+                'file' => $params['file']
             ]);
             unset($params['file_path']);
         }

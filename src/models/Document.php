@@ -6,6 +6,7 @@ namespace Vkrsmart\Models;
 use Exception;
 use Vkrsmart\Client;
 use Vkrsmart\logs\Log;
+use Illuminate\Support\Facades\File;
 
 class Document extends Model
 {
@@ -26,18 +27,15 @@ class Document extends Model
 
 
     /**
-     * @param string $filePath
+     * @param $file
      * @return array|mixed
      * @throws Exception
      */
-    public function uploadDocument(string $filePath){
+    public function uploadDocument($file): mixed
+    {
         $apiMethod = self::PREFIX.'/upload';
-        $file = fopen($filePath,'r');
-        if(!$file){
-            throw new Exception('File not found');
-        }
         $params = [
-          'file_path' => $filePath
+          'file' => $file
         ];
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
         return $this->response['document_id'];

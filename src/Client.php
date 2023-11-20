@@ -49,9 +49,7 @@ class Client
             'exp' => time() + self::EXP,
         ];
         $token = JWT::encode($payload, $this->secretKey, 'HS256');
-//        $params = array_merge(["organisation_id" => $this->organisationId], $params);
-
-        Log::debug("Organisation id = $this->organisationId,secret key = $this->secretKey,token = $token");
+        $params = array_merge(["organisation_id" => $this->organisationId], $params);
         return Curl::exec($apiMethod, $token, $params,$method);
     }
 
