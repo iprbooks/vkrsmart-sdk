@@ -3,6 +3,7 @@
 namespace Vkrsmart\Sdk\Models;
 
 use Exception;
+use PhpParser\Error;
 use Vkrsmart\Sdk\Client;
 use Vkrsmart\Sdk\logs\Log;
 
@@ -27,7 +28,7 @@ class Report extends Model
      * @return array|false|mixed|string
      * @throws Exception
      */
-    public function getUnique(int $id)
+    public function getUnique(int $id): mixed
     {
         if ($id) {
             $apiMethod = "/".$this->prefix."/{$id}";
@@ -35,10 +36,9 @@ class Report extends Model
         else{
             throw new Exception('id is invalid');
         }
-        while (!$this->response['success']){
-           $this->response = $this->getClient()->makeRequest($apiMethod,[]);
-           Log::debug("Response = ".json_encode($this->response));
-           sleep(20);
+        $this->response = $this->getClient()->makeRequest($apiMethod);
+        if(!$this->response['success']){
+            throw new Exception('Ошибка API,сообщение - '.$this->response['message']);
         }
         return $this->response['report']['uniquePercent'];
     }

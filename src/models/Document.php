@@ -4,9 +4,9 @@ namespace Vkrsmart\Sdk\Models;
 
 
 use Exception;
+use PhpParser\Error;
 use Vkrsmart\Sdk\Client;
 use Vkrsmart\Sdk\logs\Log;
-use Illuminate\Support\Facades\File;
 
 class Document extends Model
 {
@@ -38,6 +38,9 @@ class Document extends Model
           'file' => $file
         ];
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
+        if(!$this->response['success']){
+            throw new Error('Ошибка API,сообщение - '.$this->response['message']);
+        }
         return $this->response['document_id'];
     }
 

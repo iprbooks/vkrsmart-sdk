@@ -18,7 +18,7 @@ class Curl
      * @return array
      * @throws Exception
      */
-    public static function exec($apiMethod, $auth, array $params,string $method="GET"):string
+    public static function exec($apiMethod, $auth, array $params,string $method="GET"):array|string
     {
         Log::debug("Method = $method");
         $headers = array(
@@ -33,22 +33,26 @@ class Curl
         if($method=="POST" and array_key_exists('file',$params)){
             Log::debug("Вошёл в условие");
             curl_setopt($curl, CURLOPT_POST, 1);
+            $file =  $params['file'];
             curl_setopt($curl, CURLOPT_POSTFIELDS, [
-                'file' => $params['file']
+                'file' => curl_file_create($file->getPathname(), $file->getClientMimeType(), $file->getClientOriginalName())
             ]);
-            unset($params['file_path']);
+            unset($params['file']);
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        if (!empty($params)) {
-            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
-        }
+//        if (!empty($params)) {
+//            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
+//        }
         Log::debug("Url = ".self::API .$apiMethod);
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
 
         $curlResult = curl_exec($curl);
+        if($curlResult==null){
+            throw new Exception('API вернуло null');
+        }
         curl_close($curl);
         Log::debug("Curl result = $curlResult");
 
