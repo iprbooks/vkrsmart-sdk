@@ -1,12 +1,12 @@
 <?php
 
-namespace Vkrsmart;
+namespace Vkrsmart\Sdk;
 
 
 use Exception;
 use Firebase\JWT\JWT;
-use Vkrsmart\Core\Curl;
-use Vkrsmart\logs\Log;
+use Vkrsmart\Sdk\Core\Curl;
+use Vkrsmart\Sdk\logs\Log;
 
 class Client
 {

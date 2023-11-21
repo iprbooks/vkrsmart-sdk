@@ -4,7 +4,11 @@
     "type": "sdk",
     "autoload": {
         "psr-4": {
-            "Vkrsmart\\Sdk\\": "src/"
+            "Vkrsmart\\Sdk\\": "src/",
+            "Vkrsmart\\Sdk\\Core\\" : "src/core",
+            "Vkrsmart\\Sdk\\Logs\\" : "src/logs",
+            "Vkrsmart\\Sdk\\Models\\": "src/models",
+            "Vkrsmart\\Sdk\\Test\\" : "src/test"
         }
     },
     "authors": [
@@ -12,5 +16,8 @@
             "name": "Aleksandr Pavlov"
         }
     ],
-    "require": {}
+    "require": {
+        "firebase/php-jwt": "^6.9",
+        "ext-curl": "*"
+    }
 }

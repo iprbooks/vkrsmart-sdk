@@ -1,10 +1,10 @@
 <?php
 
-namespace Vkrsmart\Models;
+namespace Vkrsmart\Sdk\Models;
 
 use Exception;
-use Vkrsmart\Client;
-use Vkrsmart\logs\Log;
+use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\logs\Log;
 
 class Report extends Model
 {

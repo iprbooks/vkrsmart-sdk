@@ -1,9 +1,10 @@
 <?php
 
-namespace Vkrsmart\Models;
+namespace Vkrsmart\Sdk\Models;
 
 use Exception;
-use Vkrsmart\Client;
+use Vkrsmart\Sdk\Client;
+
 
 abstract class Model
 {

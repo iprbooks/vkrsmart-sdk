@@ -1,11 +1,11 @@
 <?php
 
-namespace Vkrsmart\Models;
+namespace Vkrsmart\Sdk\Models;
 
 
 use Exception;
-use Vkrsmart\Client;
-use Vkrsmart\logs\Log;
+use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\logs\Log;
 use Illuminate\Support\Facades\File;
 
 class Document extends Model
@@ -41,17 +41,17 @@ class Document extends Model
         return $this->response['document_id'];
     }
 
-    /**
-     * @param mixed ...$filePaths
-     * @return array|mixed
-     * @throws Exception
-     */
-    public function uploadDocuments(...$filePaths){
-        foreach ($filePaths as $filePath){
-            $this->documentIds = $this->uploadDocument($filePath);
-        }
-        return $this->documentIds;
-    }
+//    /**
+//     * @param mixed ...$filePaths
+//     * @return array|mixed
+//     * @throws Exception
+//     */
+//    public function uploadDocuments(...$filePaths){
+//        foreach ($filePaths as $filePath){
+//            $this->documentIds = $this->uploadDocument($filePath);
+//        }
+//        return $this->documentIds;
+//    }
 
 
 

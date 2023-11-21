@@ -1,6 +1,6 @@
 <?php
 
-namespace Vkrsmart\logs;
+namespace Vkrsmart\Sdk\logs;
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;

@@ -1,10 +1,9 @@
 <?php
 
-namespace Vkrsmart\Core;
+namespace Vkrsmart\Sdk\Core;
 
-use CURLFile;
 use Exception;
-use Vkrsmart\logs\Log;
+use Vkrsmart\Sdk\logs\Log;
 
 class Curl
 {
@@ -16,10 +15,10 @@ class Curl
      * @param $auth
      * @param array $params
      * @param string $method
-     * @return array|mixed
+     * @return array
      * @throws Exception
      */
-    public static function exec($apiMethod, $auth, array $params,string $method="GET"):array
+    public static function exec($apiMethod, $auth, array $params,string $method="GET"):string
     {
         Log::debug("Method = $method");
         $headers = array(
