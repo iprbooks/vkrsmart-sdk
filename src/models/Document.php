@@ -4,15 +4,15 @@ namespace Vkrsmart\Sdk\Models;
 
 
 use Exception;
+use Illuminate\Support\Facades\File;
 use PhpParser\Error;
 use Vkrsmart\Sdk\Client;
-use Vkrsmart\Sdk\logs\Log;
 
 class Document extends Model
 {
     CONST PREFIX = '/document';
 
-    private array $documentIds;
+
 
     /**
      * Конструктор Document
@@ -27,6 +27,7 @@ class Document extends Model
 
 
     /**
+     * Загрузить документ
      * @param $file
      * @return array|mixed
      * @throws Exception
@@ -38,23 +39,10 @@ class Document extends Model
           'file' => $file
         ];
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
-        if(!$this->response['success']){
-            throw new Error('Ошибка API,сообщение - '.$this->response['message']);
-        }
-        return $this->response['document_id'];
+        return $this->response['success'];
     }
 
-//    /**
-//     * @param mixed ...$filePaths
-//     * @return array|mixed
-//     * @throws Exception
-//     */
-//    public function uploadDocuments(...$filePaths){
-//        foreach ($filePaths as $filePath){
-//            $this->documentIds = $this->uploadDocument($filePath);
-//        }
-//        return $this->documentIds;
-//    }
+
 
 
 

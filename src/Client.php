@@ -6,7 +6,6 @@ namespace Vkrsmart\Sdk;
 use Exception;
 use Firebase\JWT\JWT;
 use Vkrsmart\Sdk\Core\Curl;
-use Vkrsmart\Sdk\logs\Log;
 
 class Client
 {
@@ -36,6 +35,7 @@ class Client
         $this->organisationId = $organisationId;
         $this->secretKey = $secretKey;
     }
+
 
 
     /**

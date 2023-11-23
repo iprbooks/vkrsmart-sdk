@@ -1,10 +1,11 @@
 <?php
 
-namespace Vkrsmart\Sdk\logs;
+namespace Vkrsmart\Sdk;
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
+
 class Log
 {
     public static function debug(string $message)

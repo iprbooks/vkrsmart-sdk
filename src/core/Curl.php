@@ -3,7 +3,7 @@
 namespace Vkrsmart\Sdk\Core;
 
 use Exception;
-use Vkrsmart\Sdk\logs\Log;
+use Vkrsmart\Sdk\Log;
 
 class Curl
 {
@@ -51,6 +51,7 @@ class Curl
 
         $curlResult = curl_exec($curl);
         if($curlResult==null){
+            Log::debug("API вернуло null");
             throw new Exception('API вернуло null');
         }
         curl_close($curl);

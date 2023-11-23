@@ -27,6 +27,7 @@ abstract class Model
 
 
 
+
     /**
      * Конструктор Model
      * @param Client $client
@@ -45,6 +46,25 @@ abstract class Model
     public function getClient(): Client
     {
         return $this->client;
+    }
+
+    public function getMessage()
+    {
+        return $this->getValue('message');
+    }
+
+    /**
+     * @param string $value
+     * @return false|mixed
+     */
+    public function getValue(string $value): mixed
+    {
+        if(array_key_exists($value,$this->response) and $this->response[$value]!=null){
+            return $this->response[$value];
+        }
+        else{
+            return false;
+        }
     }
 
 

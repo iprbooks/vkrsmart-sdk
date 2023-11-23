@@ -5,7 +5,6 @@ namespace Vkrsmart\Sdk\Models;
 use Exception;
 use PhpParser\Error;
 use Vkrsmart\Sdk\Client;
-use Vkrsmart\Sdk\logs\Log;
 
 class Report extends Model
 {
@@ -23,23 +22,31 @@ class Report extends Model
     }
 
     /**
-     * Отправка запроса
+     * Получить report по id
      * @param int $id
-     * @return array|false|mixed|string
+     * @return bool
      * @throws Exception
      */
-    public function getUnique(int $id): mixed
+    public function get(int $id):bool
     {
         if ($id) {
             $apiMethod = "/".$this->prefix."/{$id}";
         }
         else{
-            throw new Exception('id is invalid');
+            return false;
         }
-        $this->response = $this->getClient()->makeRequest($apiMethod);
-        if(!$this->response['success']){
-            throw new Exception('Ошибка API,сообщение - '.$this->response['message']);
+        do{
+            $this->response = $this->getClient()->makeRequest($apiMethod);
         }
-        return $this->response['report']['uniquePercent'];
+        while(!$this->getValue('success'));
+        return $this->getValue('success');
+    }
+
+    /**
+     * @return false|mixed
+     */
+    public function getReport(): mixed
+    {
+        return $this->getValue('report');
     }
 }
