@@ -3,7 +3,6 @@
 namespace Vkrsmart\Sdk\Core;
 
 use Exception;
-use Vkrsmart\Sdk\Log;
 
 class Curl
 {
@@ -20,7 +19,6 @@ class Curl
      */
     public static function exec($apiMethod, $auth, array $params,string $method="GET"):array|string
     {
-        Log::debug("Method = $method");
         $headers = array(
             'Authorization: Bearer ' . $auth,
             'Content-Type: multipart/form-data',
@@ -31,7 +29,6 @@ class Curl
             throw new Exception("Incorrect method. Should be POST or GET");
         }
         if($method=="POST" and array_key_exists('file',$params)){
-            Log::debug("Вошёл в условие");
             curl_setopt($curl, CURLOPT_POST, 1);
             $file =  $params['file'];
             curl_setopt($curl, CURLOPT_POSTFIELDS, [
@@ -46,17 +43,13 @@ class Curl
 //        if (!empty($params)) {
 //            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
 //        }
-        Log::debug("Url = ".self::API .$apiMethod);
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
 
         $curlResult = curl_exec($curl);
         if($curlResult==null){
-            Log::debug("API вернуло null");
             throw new Exception('API вернуло null');
         }
         curl_close($curl);
-        Log::debug("Curl result = $curlResult");
-
         if (curl_errno($curl)) {
             return Curl::error('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
