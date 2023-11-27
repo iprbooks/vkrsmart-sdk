@@ -40,42 +40,12 @@ class Curl
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-//        if (!empty($params)) {
-//            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
-//        }
+        if (!empty($params)) {
+            $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
+        }
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
-
         $curlResult = curl_exec($curl);
-        if($curlResult==null){
-            throw new Exception('API вернуло null');
-        }
         curl_close($curl);
-        if (curl_errno($curl)) {
-            return Curl::error('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
-        }
         return json_decode($curlResult, true);
     }
-
-
-    /**
-     * Возврат error сообщения в json
-     * @param $message
-     * @param $code
-     * @return false|string
-     */
-    public static function error($message, $code)
-    {
-        return json_encode([
-            'success' => false,
-            'message' => $message,
-            'total' => 0,
-            'status' => $code,
-            'data' => null
-            ]
-        );
-    }
-
-
-
-
 }

@@ -36,9 +36,11 @@ class Client
         $this->secretKey = $secretKey;
     }
 
-
-
     /**
+     * @param $apiMethod
+     * @param array $params
+     * @param string $method
+     * @return array
      * @throws Exception
      */
     public function makeRequest($apiMethod, array $params=[], string $method="GET"):array
@@ -49,7 +51,6 @@ class Client
             'exp' => time() + self::EXP,
         ];
         $token = JWT::encode($payload, $this->secretKey, 'HS256');
-        $params = array_merge(["organisation_id" => $this->organisationId], $params);
         return Curl::exec($apiMethod, $token, $params,$method);
     }
 
