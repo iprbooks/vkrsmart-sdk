@@ -42,6 +42,14 @@ class Document extends Model
         return $this->response['success'];
     }
 
+    /**
+     * @return false|mixed
+     */
+    public function getId(): mixed
+    {
+        return $this->getValue('document_id');
+    }
+
 
 
 
