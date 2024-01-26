@@ -3,6 +3,7 @@
 namespace Vkrsmart\Sdk\Models;
 
 use Exception;
+use Vkrsmart\Sdk\clients\BaseClient;
 use Vkrsmart\Sdk\clients\Client;
 
 
@@ -34,11 +35,8 @@ abstract class Model
      * @param $response
      * @throws Exception
      */
-    public function __construct(Client $client, $response = null)
+    public function __construct(BaseClient $client, $response = null)
     {
-        if (!$client) {
-            throw new Exception('client is not init');
-        }
         $this->client = $client;
         $this->response = $response;
     }
