@@ -29,13 +29,13 @@ function getResponse()
                 ],
                 "link" => "https://ru.wikipedia.org/wiki/Договор_подряда",
                 "percent" => 2.02215768527482,
-                "title" => "Договор_подряда"
+                "title" => "Договор подряда"
             ],
             [
                 "borrowings" => ["заимствование 1", "заимствование 2", "заимствование 3"],
-                "link" => "https://ru.wikipedia.org/wiki/Договор_подряда",
+                "link" => "https://ru.wikipedia.org/wiki/Право",
                 "percent" => 2.02215768527482,
-                "title" => "Название 2"
+                "title" => "Право"
             ]
         ],
         "uniquePercent" => 97.97784231472518

@@ -51,11 +51,12 @@ class Report extends Model
     {
         $report = getResponse();
         $documents = $report['sourceDocuments'];
-        $response = "Уникальность работы - ".$this->getUnique()."\nЗаимствованные документы";
-        $i = 0;
+        $unique = floor($report['uniquePercent'])."%";
+        $response = "Уникальность работы - ".$unique."\nЗаимствованные документы:";
+        $i = 1;
         foreach ($documents as $document)
         {
-            $response.=$i++.") Название - ".$document['title'];
+            $response.="\n\n".$i++.") Название - ".$document['title'];
             $percent = floor($document['percent']);
             $response.="\nПроцент заимствований - ".$percent."%";
             $response.="\nСсылка на документ - ".$document['link'];
