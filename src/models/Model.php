@@ -9,12 +9,13 @@ use Vkrsmart\Sdk\clients\Client;
 
 abstract class Model
 {
+
     protected string $prefix = '';
 
     /*
      * Инстанс клиента
      */
-    private Client $client;
+    private BaseClient $client;
 
     /*
      * Ответ
@@ -31,7 +32,7 @@ abstract class Model
 
     /**
      * Конструктор Model
-     * @param Client $client
+     * @param BaseClient $client
      * @param $response
      * @throws Exception
      */
@@ -41,7 +42,7 @@ abstract class Model
         $this->response = $response;
     }
 
-    public function getClient(): Client
+    public function getClient(): BaseClient
     {
         return $this->client;
     }
