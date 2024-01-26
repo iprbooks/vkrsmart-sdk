@@ -5,9 +5,12 @@ namespace Vkrsmart\Sdk\Models;
 use Exception;
 use PhpParser\Error;
 use Vkrsmart\Sdk\clients\Client;
+include('testResponse.php');
 
 class Report extends Model
 {
+
+
     protected string $prefix = 'report';
 
 
@@ -39,4 +42,25 @@ class Report extends Model
     {
         return $this->getValue('report');
     }
+
+    public function getUnique():mixed
+    {
+        return $this->response['report']['uniquePercent'];
+    }
+    public function toString(): string
+    {
+        $report = getResponse();
+        $documents = $report['sourceDocuments'];
+        $response = "Уникальность работы - ".$this->getUnique()."\nЗаимствованные документы";
+        $i = 0;
+        foreach ($documents as $document)
+        {
+            $response.=$i++.") Название - ".$document['title'];
+            $percent = floor($document['percent']);
+            $response.="\nПроцент заимствований - ".$percent."%";
+            $response.="\nСсылка на документ - ".$document['link'];
+        }
+        return $response;
+    }
+
 }
