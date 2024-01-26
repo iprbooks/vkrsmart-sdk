@@ -8,7 +8,8 @@
             "Vkrsmart\\Sdk\\Core\\" : "src/core",
             "Vkrsmart\\Sdk\\Logs\\" : "src/logs",
             "Vkrsmart\\Sdk\\Models\\": "src/models",
-            "Vkrsmart\\Sdk\\Test\\" : "src/test"
+            "Vkrsmart\\Sdk\\Test\\" : "src/test",
+            "Vkrsmart\\Sdk\\Clients\\" : "src/clients"
         }
     },
     "authors": [

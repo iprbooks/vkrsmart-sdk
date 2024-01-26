@@ -4,7 +4,7 @@ namespace Vkrsmart\Sdk\Models;
 
 use Exception;
 use PhpParser\Error;
-use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\clients\Client;
 
 class Report extends Model
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Vkrsmart\Sdk;
+namespace Vkrsmart\Sdk\clients;
 
 
 use Exception;
 use Firebase\JWT\JWT;
 use Vkrsmart\Sdk\Core\Curl;
 
-class Client
+class Client extends BaseClient
 {
     CONST EXP = 5000;
     /*
@@ -37,13 +37,13 @@ class Client
     }
 
     /**
-     * @param $apiMethod
+     * @param string $apiMethod
      * @param array $params
      * @param string $method
      * @return array
      * @throws Exception
      */
-    public function makeRequest($apiMethod, array $params=[], string $method="GET"):array
+    public function makeRequest(string $apiMethod, array $params=[], string $method="GET"):array
     {
         $payload = [
             "organization_id" => $this->organisationId,

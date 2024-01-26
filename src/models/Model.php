@@ -3,7 +3,7 @@
 namespace Vkrsmart\Sdk\Models;
 
 use Exception;
-use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\clients\Client;
 
 
 abstract class Model

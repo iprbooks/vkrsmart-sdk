@@ -6,7 +6,7 @@ namespace Vkrsmart\Sdk\Models;
 use Exception;
 use Illuminate\Support\Facades\File;
 use PhpParser\Error;
-use Vkrsmart\Sdk\Client;
+use Vkrsmart\Sdk\clients\Client;
 
 class Document extends Model
 {

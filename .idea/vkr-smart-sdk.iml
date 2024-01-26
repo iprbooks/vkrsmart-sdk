@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="false" packagePrefix="Vkrsmart\Sdk\Test\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/clients" isTestSource="false" packagePrefix="Vkrsmart\Sdk\Clients\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
