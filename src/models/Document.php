@@ -15,18 +15,6 @@ class Document extends Model
 
 
     /**
-     * Конструктор Document
-     * @param Client $client
-     * @param null $response
-     * @throws Exception
-     */
-    public function __construct(Client $client, $response = null)
-    {
-        parent::__construct($client, $response);
-    }
-
-
-    /**
      * Загрузить документ
      * @param $file
      * @return array|mixed
