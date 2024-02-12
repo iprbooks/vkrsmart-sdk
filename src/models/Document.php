@@ -13,14 +13,12 @@ class Document extends Model
     CONST PREFIX = '/document';
 
 
-
     /**
      * Загрузить документ
      * @param $file
-     * @return array|mixed
-     * @throws Exception
+     * @return bool
      */
-    public function uploadDocument($file): mixed
+    public function uploadDocument($file): bool
     {
         $apiMethod = self::PREFIX.'/upload';
         $params = [
@@ -29,6 +27,21 @@ class Document extends Model
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
         return $this->response['success'];
     }
+
+    /**
+     * Получить текст документа
+     * @param int $documentId
+     * @return bool
+     */
+    public function getText(int $documentId): bool
+    {
+        $apiMethod = self::PREFIX.'/'.$documentId;
+        $this->response = $this->getClient()->makeRequest($apiMethod,[]);
+        return $this->getValue('success');
+    }
+
+
+
 
     /**
      * @return false|mixed
