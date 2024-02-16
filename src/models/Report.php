@@ -49,7 +49,7 @@ class Report extends Model
     }
     public function toString(): string
     {
-        $report = getResponse();
+        $report = $this->getReport();
         $documents = $report['sourceDocuments'];
         $unique = floor($report['uniquePercent'])."%";
         $response = "Уникальность работы - ".$unique."\nЗаимствованные документы:";
