@@ -6,7 +6,7 @@ use Exception;
 
 class Curl
 {
-    const API = 'http://api.bse.vkr-smart.ru:8004';
+    const API = 'http://5.35.6.102:8004';
 
     /**
      * Отправка запроса

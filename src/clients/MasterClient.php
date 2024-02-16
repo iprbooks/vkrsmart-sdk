@@ -33,7 +33,6 @@ class MasterClient extends BaseClient
     public function makeRequest(string $apiMethod, array $params=[],string $method = "GET"): string|array
     {
         $payload = [
-            "master_key" => $this->masterKey,
             'exp' => time() + self::EXP,
         ];
         $token = JWT::encode($payload, $this->masterKey, 'HS256');

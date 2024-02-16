@@ -3,9 +3,6 @@
 namespace Vkrsmart\Sdk\Models;
 
 use Exception;
-use PhpParser\Error;
-use Vkrsmart\Sdk\clients\Client;
-include('testResponse.php');
 
 class Report extends Model
 {
