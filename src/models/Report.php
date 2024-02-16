@@ -14,22 +14,17 @@ class Report extends Model
     /**
      * Получить report по id
      * @param int $id
-     * @return bool
-     * @throws Exception
      */
-    public function get(int $id):bool
+    public function get(int $id):void
     {
         if ($id) {
             $apiMethod = "/".$this->prefix."/{$id}";
         }
-        else{
-            return false;
-        }
-        do{
-            $this->response = $this->getClient()->makeRequest($apiMethod);
-        }
-        while(!$this->getValue('success'));
-        return $this->getValue('success');
+        $this->response = $this->getClient()->makeRequest($apiMethod);
+//        do{
+//            $this->response = $this->getClient()->makeRequest($apiMethod);
+//        }
+//        while(!$this->getValue('success'));
     }
 
     /**

@@ -16,16 +16,15 @@ class Document extends Model
     /**
      * Загрузить документ
      * @param $file
-     * @return bool
      */
-    public function uploadDocument($file): bool
+    public function uploadDocument($file)
     {
         $apiMethod = self::PREFIX.'/upload';
         $params = [
           'file' => $file
         ];
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
-        return $this->response['success'];
+
     }
 
     /**
