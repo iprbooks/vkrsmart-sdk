@@ -29,17 +29,15 @@ abstract class Model
     protected bool $master;
 
 
-
-
     /**
      * Конструктор Model
      * @param BaseClient $client
-     * @param $response
-     * @throws Exception
+     * @param bool $master
      */
-    public function __construct(BaseClient $client)
+    public function __construct(BaseClient $client,bool $master)
     {
         $this->client = $client;
+        $this->master = $master;
     }
 
     public function getClient(): BaseClient
