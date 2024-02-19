@@ -6,6 +6,7 @@ namespace Vkrsmart\Sdk\Models;
 use Exception;
 use Illuminate\Support\Facades\File;
 use PhpParser\Error;
+use Vkrsmart\Sdk\clients\BaseClient;
 use Vkrsmart\Sdk\clients\Client;
 
 class Document extends Model
@@ -19,7 +20,12 @@ class Document extends Model
      */
     public function uploadDocument($file)
     {
-        $apiMethod = self::PREFIX.'/upload';
+        if($this->master){
+            $apiMethod = '/master'.self::PREFIX.'/upload';
+        }
+        else{
+            $apiMethod = self::PREFIX.'/upload';
+        }
         $params = [
           'file' => $file
         ];

@@ -25,7 +25,8 @@ abstract class Model
     /*
      * Данные ответа
      */
-    protected array $data;
+
+    protected bool $master;
 
 
 
@@ -36,10 +37,9 @@ abstract class Model
      * @param $response
      * @throws Exception
      */
-    public function __construct(BaseClient $client, $response = null)
+    public function __construct(BaseClient $client)
     {
         $this->client = $client;
-        $this->response = $response;
     }
 
     public function getClient(): BaseClient

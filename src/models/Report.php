@@ -17,7 +17,10 @@ class Report extends Model
      */
     public function get(int $id):void
     {
-        if ($id) {
+        if($this->master){
+            $apiMethod = "/master/".$this->prefix."/{$id}";
+        }
+        else{
             $apiMethod = "/".$this->prefix."/{$id}";
         }
         $this->response = $this->getClient()->makeRequest($apiMethod);
