@@ -2,6 +2,7 @@
 
 namespace Vkrsmart\Sdk\Core;
 
+use CURLFile;
 use Exception;
 
 class Curl
@@ -28,13 +29,20 @@ class Curl
         if($method!="GET" and $method!="POST"){
             throw new Exception("Incorrect method. Should be POST or GET");
         }
-        if($method=="POST" and array_key_exists('file',$params)){
+        //Для файлов полученных напрямую через request
+        if(array_key_exists('file',$params)){
             curl_setopt($curl, CURLOPT_POST, 1);
             $file =  $params['file'];
             curl_setopt($curl, CURLOPT_POSTFIELDS, [
                 'file' => curl_file_create($file->getPathname(), $file->getClientMimeType(), $file->getClientOriginalName())
             ]);
             unset($params['file']);
+        }
+        //Для файлов, загруженных с сервера
+        elseif (array_key_exists('file_path',$params)){
+            $file_path = '/путь/к/вашему/файлу.txt';
+            $file = new CURLFile($file_path);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, array('file' => $file));
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
