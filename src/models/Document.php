@@ -17,8 +17,9 @@ class Document extends Model
     /**
      * Загрузить документ
      * @param $file
+     * @return bool
      */
-    public function uploadDocument($file)
+    public function uploadDocument($file):bool
     {
         if($this->master){
             $apiMethod = '/master'.self::PREFIX.'/upload';
@@ -30,6 +31,7 @@ class Document extends Model
           'file' => $file
         ];
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
+        return $this->getSuccess();
 
     }
 

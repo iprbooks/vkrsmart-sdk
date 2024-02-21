@@ -50,6 +50,11 @@ abstract class Model
         return $this->getValue('message');
     }
 
+    public function getSuccess()
+    {
+        return $this->getValue('success');
+    }
+
     /**
      * @param string $value
      * @return false|mixed

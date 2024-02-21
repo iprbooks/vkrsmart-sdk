@@ -15,7 +15,7 @@ class Report extends Model
      * Получить report по id
      * @param int $id
      */
-    public function get(int $id):void
+    public function get(int $id):bool
     {
         if($this->master){
             $apiMethod = "/master/".$this->prefix."/{$id}";
@@ -24,10 +24,7 @@ class Report extends Model
             $apiMethod = "/".$this->prefix."/{$id}";
         }
         $this->response = $this->getClient()->makeRequest($apiMethod);
-//        do{
-//            $this->response = $this->getClient()->makeRequest($apiMethod);
-//        }
-//        while(!$this->getValue('success'));
+        return $this->getSuccess();
     }
 
     /**
