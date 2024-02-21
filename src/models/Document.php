@@ -27,9 +27,13 @@ class Document extends Model
         else{
             $apiMethod = self::PREFIX.'/upload';
         }
-        $params = [
-          'file' => $file
-        ];
+        $params = [];
+        if(is_string($file)){
+            $params[] = 'file_path';
+        }
+        else{
+            $params[] = 'file';
+        }
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
         return $this->getSuccess();
 
