@@ -43,6 +43,7 @@ class Curl
             $filePath = $params['file_path'];
             $file = new CURLFile($filePath);
             curl_setopt($curl, CURLOPT_POSTFIELDS,['file' => $file]);
+            unset($params['file_path']);
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

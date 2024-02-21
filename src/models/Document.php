@@ -34,13 +34,6 @@ class Document extends Model
         else{
             $params['file'] = $file;
         }
-        $maxCycles = 200;
-        $count = 0;
-        do{
-            $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
-            $count++;
-        }
-        while (!$this->getSuccess() and $count<$maxCycles);
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
         return $this->getSuccess();
 
