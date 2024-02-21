@@ -40,9 +40,9 @@ class Curl
         }
         //Для файлов, загруженных с сервера
         elseif (array_key_exists('file_path',$params)){
-            $file_path = '/путь/к/вашему/файлу.txt';
-            $file = new CURLFile($file_path);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, array('file' => $file));
+            $filePath = $params['file_path'];
+            $file = new CURLFile($filePath);
+            curl_setopt($curl, CURLOPT_POSTFIELDS,['file' => $file]);
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
