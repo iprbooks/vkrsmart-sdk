@@ -29,10 +29,10 @@ class Document extends Model
         }
         $params = [];
         if(is_string($file)){
-            $params[] = 'file_path';
+            $params['file_path'] = $file;
         }
         else{
-            $params[] = 'file';
+            $params['file'] = $file;
         }
         $this->response = $this->getClient()->makeRequest($apiMethod,$params,'POST');
         return $this->getSuccess();
