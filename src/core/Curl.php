@@ -42,7 +42,7 @@ class Curl
         elseif (array_key_exists('file_path',$params)){
             $filePath = $params['file_path'];
             $file = new CURLFile($filePath);
-            curl_setopt($curl, CURLOPT_POSTFIELDS,['file' => $file]);
+            curl_setopt($curl, CURLOPT_POSTFIELDS,['file' => curl_file_create($filePath)]);
             unset($params['file_path']);
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
