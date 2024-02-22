@@ -4,7 +4,7 @@ namespace Vkrsmart\Sdk\Core;
 
 use CURLFile;
 use Exception;
-
+use Illuminate\Support\Facades\Log;
 class Curl
 {
     const API = 'http://5.35.6.102:8004';
@@ -52,8 +52,10 @@ class Curl
         if (!empty($params)) {
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         }
+        Log::debug('Api method - '.$apiMethod);
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
         $curlResult = curl_exec($curl);
+        Log::debug('Curl result - '.$curlResult);
         if($curlResult==null){
             $curlResult =  Curl::error('API вернуло null', 500);
         }
