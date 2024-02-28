@@ -51,6 +51,11 @@ class Document extends Model
         return $this->getValue('success');
     }
 
+    public function text()
+    {
+        return $this->getValue('text');
+    }
+
 
 
 
