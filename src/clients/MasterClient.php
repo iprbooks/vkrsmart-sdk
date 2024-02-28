@@ -37,7 +37,7 @@ class MasterClient extends BaseClient
         ];
         $token = JWT::encode($payload, $this->masterKey, 'HS256');
         $params = array_merge($params);
-        $result = Curl::exec($apiMethod, $token, $params);
+        $result = Curl::exec($apiMethod, $token, $params,$method);
         return $result;
     }
 }
