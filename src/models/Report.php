@@ -31,7 +31,7 @@ class Report extends Model
             sleep(5);
             $i++;
         }
-        while(!$this->getSuccess() and $i<2000);
+        while(!$this->getSuccess() and $i<36);
         $this->response = $this->getClient()->makeRequest($apiMethod);
         return $this->getSuccess();
     }
