@@ -14,8 +14,10 @@ class Report extends Model
     /**
      * Получить report по id
      * @param int $id
+     * @param array $params
+     * @return bool
      */
-    public function get(int $id):bool
+    public function get(int $id,array $params = []):bool
     {
         if($this->master){
             $apiMethod = "/master/".$this->prefix."/{$id}";
@@ -23,6 +25,13 @@ class Report extends Model
         else{
             $apiMethod = "/".$this->prefix."/{$id}";
         }
+        $i = 0;
+        do{
+            $this->response = $this->getClient()->makeRequest($apiMethod,$params);
+            sleep(5);
+            $i++;
+        }
+        while(!$this->getSuccess() and $i<2000);
         $this->response = $this->getClient()->makeRequest($apiMethod);
         return $this->getSuccess();
     }

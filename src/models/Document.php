@@ -17,9 +17,10 @@ class Document extends Model
     /**
      * Загрузить документ
      * @param $file
+     * @param array $params
      * @return bool
      */
-    public function uploadDocument($file):bool
+    public function uploadDocument($file,array $params = []):bool
     {
         if($this->master){
             $apiMethod = '/master'.self::PREFIX.'/upload';
@@ -27,7 +28,6 @@ class Document extends Model
         else{
             $apiMethod = self::PREFIX.'/upload';
         }
-        $params = [];
         if(is_string($file)){
             $params['file_path'] = $file;
         }
