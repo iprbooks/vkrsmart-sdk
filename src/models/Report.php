@@ -32,7 +32,6 @@ class Report extends Model
             $i++;
         }
         while(!$this->getSuccess() and $i<36);
-        $this->response = $this->getClient()->makeRequest($apiMethod);
         return $this->getSuccess();
     }
 
@@ -51,6 +50,9 @@ class Report extends Model
     public function toString(): string
     {
         $report = $this->getReport();
+        if($this->getUnique()==100){
+            return 'В вашей работе нет заимствований';
+        }
         $documents = $report['sourceDocuments'];
         $unique = floor($report['uniquePercent'])."%";
         $response = "Уникальность работы - ".$unique."\nЗаимствованные документы:";
