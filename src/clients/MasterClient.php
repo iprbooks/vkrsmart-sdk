@@ -7,7 +7,7 @@ use Vkrsmart\Sdk\Core\Curl;
 
 class MasterClient extends BaseClient
 {
-    CONST EXP = 500;
+    CONST EXP = 5000000000000;
 
 
     private string $masterKey;
