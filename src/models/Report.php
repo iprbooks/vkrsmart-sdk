@@ -54,12 +54,12 @@ class Report extends Model
             return 'В вашей работе нет заимствований';
         }
         $documents = $report['sourceDocuments'];
-        $unique = floor($report['uniquePercent'])."%";
+        $unique = round($report['uniquePercent'],2)."%";
         $response = "Уникальность работы - ".$unique."\nЗаимствованные документы:";
         $i = 1;
         foreach ($documents as $document)
         {
-            $response.="\n\n".$i++.") Название - ".$document['title'];
+            $response.'\n\n'.$i++.')'.$document['title'];
             $percent = floor($document['percent']);
             $response.="\nПроцент заимствований - ".$percent."%";
             $response.="\nСсылка на документ - ".$document['link'];
