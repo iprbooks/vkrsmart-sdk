@@ -59,8 +59,9 @@ class Report extends Model
         $i = 1;
         foreach ($documents as $document)
         {
-            $response."\n\n".$i++.')'.$document['title'];
-            $response.="\nПроцент заимствований - ".$unique."%";
+            $response.="\n\n".$i++.')'.$document['title'];
+            $percent = round($document['percent'],2);
+            $response.="\nПроцент заимствований - ".$percent."%";
             $response.="\nСсылка на документ - ".$document['link'];
         }
         return $response;
