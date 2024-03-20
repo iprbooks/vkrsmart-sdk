@@ -40,4 +40,9 @@ class MasterClient extends BaseClient
         $result = Curl::exec($apiMethod, $this->token , $params,$method);
         return $result;
     }
+
+    public function getToken(): string
+    {
+        return $this->token;
+    }
 }
