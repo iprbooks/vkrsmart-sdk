@@ -25,7 +25,7 @@ abstract class BaseClient
     abstract public function makeRequest(string $apiMethod, array $params=[],string $method = "GET"): mixed;
 
 
-    public function getClient(): string
+    public function getToken(): string
     {
         return $this->token;
     }
