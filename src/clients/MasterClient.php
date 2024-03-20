@@ -35,9 +35,9 @@ class MasterClient extends BaseClient
         $payload = [
             'exp' => time() + self::EXP,
         ];
-        $token = JWT::encode($payload, $this->masterKey, 'HS256');
+        $this->token  = JWT::encode($payload, $this->masterKey, 'HS256');
         $params = array_merge($params);
-        $result = Curl::exec($apiMethod, $token, $params,$method);
+        $result = Curl::exec($apiMethod, $this->token , $params,$method);
         return $result;
     }
 }

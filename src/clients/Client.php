@@ -50,8 +50,8 @@ class Client extends BaseClient
             'iat' => time(),
             'exp' => time() + self::EXP,
         ];
-        $token = JWT::encode($payload, $this->secretKey, 'HS256');
-        return Curl::exec($apiMethod, $token, $params,$method);
+        $this->token = JWT::encode($payload, $this->secretKey, 'HS256');
+        return Curl::exec($apiMethod, $this->token , $params,$method);
     }
 
 }

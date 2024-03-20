@@ -12,6 +12,8 @@ abstract class BaseClient
 
     private string $masterKey;
 
+    protected string $token;
+
 
     /**
      * Сделать запрос к API через интерфейс клиента
@@ -21,4 +23,13 @@ abstract class BaseClient
      * @return array|mixed
      */
     abstract public function makeRequest(string $apiMethod, array $params=[],string $method = "GET"): mixed;
+
+
+    public function getClient(): string
+    {
+        return $this->token;
+    }
+
+
+
 }
