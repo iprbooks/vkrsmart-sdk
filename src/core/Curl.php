@@ -56,12 +56,13 @@ class Curl
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
         $curlResult = curl_exec($curl);
         Log::debug('Curl result - '.$curlResult);
-        if($curlResult==null){
-            $curlResult =  Curl::error('API вернуло null', 500);
-        }
         curl_close($curl);
         if (curl_errno($curl)) {
             $curlResult =  Curl::error('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
+        }
+        $result = json_decode($curlResult, true);
+        if($result==null){
+            return json_decode(Curl::error('API вернуло null',403));
         }
         return json_decode($curlResult, true);
     }
