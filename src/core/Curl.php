@@ -62,9 +62,9 @@ class Curl
         }
         $result = json_decode($curlResult, true);
         if($result==null){
-            return json_decode(Curl::error('API вернуло null',403));
+             (Curl::error('API вернуло null',403));
         }
-        return json_decode($curlResult, true);
+        return $result;
     }
 
     /**
