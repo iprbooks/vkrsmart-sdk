@@ -25,7 +25,7 @@ class Report extends Model
         else{
             $apiMethod = "/".$this->prefix."/{$id}";
         }
-        $requestsLimit = 90;
+        $requestsLimit = 200;
         $i = 0;
         do{
             $this->response = $this->getClient()->makeRequest($apiMethod,$params);
