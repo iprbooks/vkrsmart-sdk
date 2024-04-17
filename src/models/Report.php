@@ -25,13 +25,14 @@ class Report extends Model
         else{
             $apiMethod = "/".$this->prefix."/{$id}";
         }
+        $requestsLimit = 90;
         $i = 0;
         do{
             $this->response = $this->getClient()->makeRequest($apiMethod,$params);
             sleep(5);
             $i++;
         }
-        while(!$this->getSuccess() and $i<36);
+        while(!$this->getSuccess() and $i<$requestsLimit);
         return $this->getSuccess();
     }
 
