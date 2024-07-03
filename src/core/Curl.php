@@ -7,7 +7,8 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 class Curl
 {
-    const API = 'http://5.35.6.102:8004';
+    const API = 'https://api.bse.vkr-smart.ru/master';
+
 
     /**
      * Отправка запроса
