@@ -59,7 +59,7 @@ class Report extends Model
 
     public function getUnique():mixed
     {
-        return $this->response['report']['uniquePercent'];
+        return round($this->response['report']['uniquePercent']);
     }
     public function toString(): string
     {
