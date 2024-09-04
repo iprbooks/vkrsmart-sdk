@@ -42,9 +42,7 @@ class Report extends Model
     public function getReport(): mixed
     {
         $report = $this->getValue('report');
-        $data = json_decode($report, true);
-
-        usort($data['sourceDocuments'], function($a, $b){
+        usort($report['sourceDocuments'], function($a, $b){
             if ($a['percent'] < $b['percent']) {
                 return -1;
             }
