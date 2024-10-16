@@ -76,7 +76,7 @@ class Report extends Model
                 break;
             }
             $response.="\n\n".$i++.')'.$document['title'];
-            $percent = round($document['percent'],2);
+            $percent = round($document['percent'],5);
             $response.="\nПроцент заимствований - ".$percent."%";
             $response.="\nСсылка на документ - ".$document['link'];
         }
