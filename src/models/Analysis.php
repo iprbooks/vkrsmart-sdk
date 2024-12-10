@@ -7,6 +7,8 @@ class Analysis extends Model
     protected string $prefix = 'report';
 
 
+
+
     /**
      * Получить report по id
      * @param int $id
@@ -30,6 +32,16 @@ class Analysis extends Model
     public function getAnalysis(): mixed
     {
         return $this->getValue('analysis');
+    }
+
+    public function getCharacters()
+    {
+        return $this->response['analysis']['сharacters'];
+    }
+
+    public function getProposals()
+    {
+        return $this->response['analysis']['proposals'];
     }
 
 }
