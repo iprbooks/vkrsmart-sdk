@@ -63,7 +63,7 @@ class Curl
         }
         $result = json_decode($curlResult, true);
         if($result==null){
-             (Curl::error('API вернуло null',403));
+             return Curl::error('API вернуло null',403);
         }
         return $result;
     }
