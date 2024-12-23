@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 class Curl
 {
-    const API = 'https://api.bse.vkr-smart.ru';
+    const API = 'https://api.bse.dev.vkr-smart.ru/master';
 
 
     /**
@@ -53,18 +53,34 @@ class Curl
         if (!empty($params)) {
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         }
+
         Log::debug('Api method - '.$apiMethod);
+
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
+
         $curlResult = curl_exec($curl);
         Log::debug('Curl result - '.$curlResult);
+
         curl_close($curl);
+
         if (curl_errno($curl)) {
             $curlResult =  Curl::error('Curl error ' . curl_errno($curl) . ': ' . curl_error($curl), 500);
         }
+
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+        // Проверка на HTTP-статус
+        if ($httpCode >= 400) {
+            return Curl::error("API вернуло ошибку: $httpCode", $httpCode);
+        }
+
         $result = json_decode($curlResult, true);
+
         if($result==null){
              return Curl::error('API вернуло null',403);
         }
+
         return $result;
     }
 
