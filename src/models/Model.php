@@ -61,7 +61,7 @@ abstract class Model
      */
     public function getValue(string $value): mixed
     {
-        if(array_key_exists($value,$this->response) and $this->response[$value]!=null){
+        if(is_array($this->response) && array_key_exists($value,$this->response) && $this->response[$value]!=null){
             return $this->response[$value];
         }
         else{
