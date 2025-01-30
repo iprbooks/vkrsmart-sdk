@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 class Curl
 {
-    const API = 'https://api.bse.dev.vkr-smart.ru';
+    const API = 'https://api.bse.vkr-smart.ru';
 
 
     /**
