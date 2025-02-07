@@ -85,8 +85,6 @@ class Report extends Model
     {
         $sourceDocuments =  $this->response['report']['sourceDocuments'];
 
-        Log::debug('source documents = '.print_r($sourceDocuments,true));
-
         if(isset($sourceDocuments))
         {
             usort($sourceDocuments, function($a, $b){
