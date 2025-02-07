@@ -36,7 +36,7 @@ class Report extends Model
     {
         $report = $this->getValue('report');
 
-        if ($report['sourceDocuments'])
+        if (isset($report['sourceDocuments']))
         {
             usort($report['sourceDocuments'], function($a, $b){
                 if ($a['percent'] < $b['percent']) {
