@@ -80,16 +80,19 @@ class Report extends Model
     {
         $sourceDocuments =  $this->getReportValue('sourceDocuments');
 
-        usort($sourceDocuments, function($a, $b){
-            if ($a['borrowingPercent'] > $b['borrowingPercent']) {
-                return -1;
-            }
+        if($sourceDocuments)
+        {
+            usort($sourceDocuments, function($a, $b){
+                if ($a['borrowingPercent'] > $b['borrowingPercent']) {
+                    return -1;
+                }
 
-            if ($a['borrowingPercent'] < $b['borrowingPercent']) {
-                return 1;
-            }
-            return 0;
-        });
+                if ($a['borrowingPercent'] < $b['borrowingPercent']) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
 
         return $sourceDocuments;
     }
