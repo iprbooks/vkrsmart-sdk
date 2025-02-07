@@ -35,16 +35,21 @@ class Report extends Model
     public function getReport(): mixed
     {
         $report = $this->getValue('report');
-        usort($report['sourceDocuments'], function($a, $b){
-            if ($a['percent'] < $b['percent']) {
-                return -1;
-            }
 
-            if ($a['percent'] > $b['percent']) {
-                return 1;
-            }
-            return 0;
-        });
+        if ($report['sourceDocuments'])
+        {
+            usort($report['sourceDocuments'], function($a, $b){
+                if ($a['percent'] < $b['percent']) {
+                    return -1;
+                }
+
+                if ($a['percent'] > $b['percent']) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
+
         return $this->getValue('report');
     }
 
