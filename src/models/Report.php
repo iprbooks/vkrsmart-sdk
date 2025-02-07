@@ -83,9 +83,9 @@ class Report extends Model
 
     public function getDocuments()
     {
-        $sourceDocuments =  $this->response['report']['sourceDocuments'];
+        $sourceDocuments =  $this->getReportValue('sourceDocuments');
 
-        if(isset($sourceDocuments))
+        if($sourceDocuments)
         {
             usort($sourceDocuments, function($a, $b){
                 if ($a['borrowingPercent'] > $b['borrowingPercent']) {
