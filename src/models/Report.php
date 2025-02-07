@@ -78,7 +78,7 @@ class Report extends Model
 
     public function getDocuments()
     {
-        return $this->response['report']['sourceDocuments'];
+        return $this->getReportValue('sourceDocuments');
     }
 
 }
