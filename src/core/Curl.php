@@ -62,6 +62,7 @@ class Curl
         Log::debug('api begin = '.now()->format('Y-m-d H:i:s.u'));
         $curlResult = curl_exec($curl);
         Log::debug('api end = '.now()->format('Y-m-d H:i:s.u'));
+        Log::debug('Curl result = '.$curlResult);
 
 
         curl_close($curl);
