@@ -28,7 +28,7 @@ class Report extends Model
             $apiMethod = "/".$this->prefix."/{$id}";
         }
         $this->response = $this->getClient()->makeRequest($apiMethod,$params);
-        $this->report = $this->report;
+        $this->report = $this->response['report'];
         return $this->getSuccess();
     }
 
