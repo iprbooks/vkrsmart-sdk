@@ -69,15 +69,6 @@ abstract class Model
         }
     }
 
-    public function getReportValue(string $value):mixed
-    {
-        if(is_array($this->response['report']) && array_key_exists($value,$this->response['report']) && $this->response['report'][$value]!=null){
-            return $this->response['report'][$value];
-        }
-        else{
-            return false;
-        }
-    }
 
 
 

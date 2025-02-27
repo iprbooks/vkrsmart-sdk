@@ -9,6 +9,8 @@ class Report extends Model
 
 
     protected string $prefix = 'report';
+    
+    protected $report;
 
 
     /**
@@ -26,6 +28,7 @@ class Report extends Model
             $apiMethod = "/".$this->prefix."/{$id}";
         }
         $this->response = $this->getClient()->makeRequest($apiMethod,$params);
+        $this->report = $this->report;
         return $this->getSuccess();
     }
 
@@ -55,7 +58,7 @@ class Report extends Model
 
     public function getUnique():mixed
     {
-        return round($this->response['report']['uniquePercent']);
+        return round($this->report['uniquePercent']);
     }
     public function toString(): string
     {
@@ -101,5 +104,18 @@ class Report extends Model
 
         return $sourceDocuments;
     }
+
+    public function getReportValue(string $value):mixed
+    {
+        if(is_array($this->report) && array_key_exists($value,$this->report) && $this->report[$value]!=null)
+        {
+            return $this->report[$value];
+        }
+        else{
+            return false;
+        }
+    }
+    
+    
 
 }
