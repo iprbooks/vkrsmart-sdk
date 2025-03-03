@@ -28,8 +28,14 @@ class Report extends Model
             $apiMethod = "/".$this->prefix."/{$id}";
         }
         $this->response = $this->getClient()->makeRequest($apiMethod,$params);
-        $this->report = $this->response['report'];
-        return $this->getSuccess();
+
+        if(is_array($this->response) && array_key_exists('report',$this->response))
+        {
+            $this->report = $this->response['report'];
+            return $this->getSuccess();
+        }
+
+        return false;
     }
 
     /**
