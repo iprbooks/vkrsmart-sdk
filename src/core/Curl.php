@@ -54,15 +54,11 @@ class Curl
             $apiMethod = sprintf("%s?%s", $apiMethod, http_build_query($params, '', '&'));
         }
 
-        Log::debug('Api method - '.$apiMethod);
 
         curl_setopt($curl, CURLOPT_URL, self::API .$apiMethod);
 
 
-        Log::debug('api begin = '.now()->format('Y-m-d H:i:s.u'));
         $curlResult = curl_exec($curl);
-        Log::debug('api end = '.now()->format('Y-m-d H:i:s.u'));
-        Log::debug('Curl result = '.$curlResult);
 
 
         curl_close($curl);
