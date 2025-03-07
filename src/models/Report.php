@@ -117,7 +117,8 @@ class Report extends Model
         {
             return $this->report[$value];
         }
-        else{
+        else
+        {
             return false;
         }
     }
