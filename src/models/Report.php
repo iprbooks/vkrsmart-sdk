@@ -94,18 +94,14 @@ class Report extends Model
     {
         $sourceDocuments =  $this->getReportValue('sourceDocuments');
 
-        if($sourceDocuments)
+        if ($sourceDocuments)
         {
-            usort($sourceDocuments, function($a, $b){
-                if ($a['borrowingPercent'] > $b['borrowingPercent']) {
-                    return -1;
-                }
-
-                if ($a['borrowingPercent'] < $b['borrowingPercent']) {
-                    return 1;
-                }
-                return 0;
+            usort($sourceDocuments, function ($a, $b) {
+                return $b['borrowingPercent'] <=> $a['borrowingPercent'];
             });
+
+            // Оставляем только первые 5 элементов
+            $sourceDocuments = array_slice($sourceDocuments, 0, 5);
         }
 
         return $sourceDocuments;
