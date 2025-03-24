@@ -90,7 +90,7 @@ class Report extends Model
         return $response;
     }
 
-    public function getDocuments()
+    public function getDocuments(bool $limitDocuments)
     {
         $sourceDocuments =  $this->getReportValue('sourceDocuments');
 
@@ -100,8 +100,12 @@ class Report extends Model
                 return $b['borrowingPercent'] <=> $a['borrowingPercent'];
             });
 
-            // Оставляем только первые 5 элементов
-            $sourceDocuments = array_slice($sourceDocuments, 0, 5);
+            if($limitDocuments)
+            {
+                // Оставляем только первые 5 элементов
+                $sourceDocuments = array_slice($sourceDocuments, 0, 5);
+            }
+
         }
 
         return $sourceDocuments;
