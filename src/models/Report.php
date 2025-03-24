@@ -90,7 +90,7 @@ class Report extends Model
         return $response;
     }
 
-    public function getDocuments(bool $limitDocuments)
+    public function getDocuments(bool $limitDocuments=false)
     {
         $sourceDocuments =  $this->getReportValue('sourceDocuments');
 
