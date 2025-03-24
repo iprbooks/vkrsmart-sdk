@@ -48,8 +48,8 @@ SDK,помогающее внедрить функционал VKR-SMART-API в 
 Пример:
 
 ```php
-$clientId = 187;
-$token = 'qdEEZBzAr!KV%Dq(WfNm]mNdLzn(m8{8';
+$clientId = 12345;
+$token = 'some-key';
 
 $client = new Client($clientId, $token);
 ```
