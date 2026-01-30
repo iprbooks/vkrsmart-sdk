@@ -42,13 +42,13 @@ class Document extends Model
     /**
      * Получить текст документа
      * @param int $documentId
-     * @return bool
+     * @return string|false
      */
-    public function getText(int $documentId): bool
+    public function getText(int $documentId): string|false
     {
-        $apiMethod = self::PREFIX.'/'.$documentId;
-        $this->response = $this->getClient()->makeRequest($apiMethod,[]);
-        return $this->getValue('success');
+        $apiMethod = self::PREFIX.'/'.$documentId.'/download';
+
+        return $this->getClient()->makeFileRequest($apiMethod);
     }
 
     public function text()

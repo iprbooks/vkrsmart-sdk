@@ -24,6 +24,8 @@ abstract class BaseClient
      */
     abstract public function makeRequest(string $apiMethod, array $params=[],string $method = "GET"): mixed;
 
+    abstract public function makeFileRequest(string $apiMethod):string|false;
+
 
 
 

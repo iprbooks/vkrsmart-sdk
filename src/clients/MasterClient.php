@@ -3,6 +3,7 @@
 namespace Vkrsmart\Sdk\clients;
 
 use Firebase\JWT\JWT;
+use Illuminate\Support\Facades\Http;
 use Vkrsmart\Sdk\Core\Curl;
 
 class MasterClient extends BaseClient
@@ -32,19 +33,35 @@ class MasterClient extends BaseClient
      */
     public function makeRequest(string $apiMethod, array $params=[],string $method = "GET"): string|array
     {
-        $payload = [
-            'exp' => time() + self::EXP,
-            'organization_id' => 1
-        ];
         $params['organization_id'] = 1;
-        $this->token  = JWT::encode($payload, $this->masterKey, 'HS256');
-        $params = array_merge($params);
-        $result = Curl::exec($apiMethod, $this->token , $params,$method);
-        return $result;
+        $this->token  = $this->getToken();
+
+        return Curl::exec($apiMethod, $this->token , $params,$method);
+    }
+
+    public function makeFileRequest(string $apiMethod):string|false
+    {
+        $fullUrl = Curl::API.'/'.$apiMethod;
+
+        $token = $this->getToken();
+
+        $response =  Http::withHeaders([
+            'Authorization' => $token,
+        ])->get($fullUrl);
+
+        if ($response->successful()) {
+            return $response->body();
+        }
+
+        return false;
     }
 
     public function getToken(): string
     {
-        return $this->token;
+        $payload = [
+            'exp' => time() + self::EXP,
+            'organization_id' => 1
+        ];
+        return JWT::encode($payload, $this->masterKey, 'HS256');
     }
 }
