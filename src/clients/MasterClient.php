@@ -41,14 +41,12 @@ class MasterClient extends BaseClient
 
     public function makeFileRequest(string $apiMethod):string|false
     {
-        $fullUrl = Curl::API.$apiMethod;
+        $fullUrl = Curl::API.'/master'.$apiMethod;
 
         $token = $this->getToken();
 
-        $response =  Http::withHeaders([
-            'Authorization' => $token,
-        ])->get($fullUrl);
-
+        $response =  Http::withToken($token)->get($fullUrl);
+        
         if ($response->successful()) {
             return $response->body();
         }
